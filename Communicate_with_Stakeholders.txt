@@ -1,0 +1,15 @@
+Hi There,
+	
+Hope you are doing well! I explored the datasets for the information of receipts and I found there might be some data quality issues with the data when I explore the datasets, so I want to get some clarification about the data issues. 
+
+When I explore the datasets, I found there are a lot of missing values. Especially, there are 46% of total receipts are missing the reward points earned. Then I figured it out that there is no reward points earned for those receipts that they are in PENDING or SUBMITTED status. However, for those REJECTED receipts, there are some reward points earned for some of those REJECTED receipts. So, if those REJECTED receipts shouldn't have the reward points, I will go ahead to remove the reward points of those REJECTED receipts. 
+
+I have another question, what is the relationship between bonus points and the rewards points earned, how many reward points earned per dollar value spend? Because I found that there are some reward points earned even though there is no money spent on the receipt, and there is no reward point earned for some of the receipts with money spent.
+
+
+Thank you for your help on this. Please let me know if there is any questions about the details.
+
+
+Thanks!
+
+Jason

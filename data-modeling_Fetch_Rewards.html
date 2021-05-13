@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<!-- saved from url=(0099)https://fetch-hiring.s3.amazonaws.com/analytics-engineer/ineeddata-data-modeling/data-modeling.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width," initial-scale="1">
+        <link rel="stylesheet" href="./data-modeling_Fetch_Rewards_files/monokai-sublime.css">
+    <link href="chrome-extension://iihgchombimnadbbapofogflgbifgbgl/content/css/jlzs.css" rel="stylesheet" type="text/css"><link href="chrome-extension://iihgchombimnadbbapofogflgbifgbgl/content/css/select.css" rel="stylesheet" type="text/css"><link href="chrome-extension://iihgchombimnadbbapofogflgbifgbgl/content/css/input.css" rel="stylesheet" type="text/css"><link href="chrome-extension://iihgchombimnadbbapofogflgbifgbgl/content/css/checkbox.css" rel="stylesheet" type="text/css"><link href="chrome-extension://iihgchombimnadbbapofogflgbifgbgl/content/css/jlzs.css" rel="stylesheet" type="text/css"><link href="chrome-extension://iihgchombimnadbbapofogflgbifgbgl/content/css/select.css" rel="stylesheet" type="text/css"><link href="chrome-extension://iihgchombimnadbbapofogflgbifgbgl/content/css/input.css" rel="stylesheet" type="text/css"><link href="chrome-extension://iihgchombimnadbbapofogflgbifgbgl/content/css/checkbox.css" rel="stylesheet" type="text/css"></head>
+    <body>
+
+        <h1>Fetch Rewards Coding Exercise - Analytics Engineer</h1>
+
+
+        <h2>In this exercise you will:</h2>
+
+            <p>
+                Demonstrate how you reason about data and how you communicate your understanding of a 
+                specific data set to others. 
+            </p>
+
+
+        <h2>What are the requirements?</h2>
+
+            <ol>
+                <li>Review unstructured JSON data and diagram a new structured relational data model</li>
+                <li>Generate a query that answers a predetermined business question </li>
+                <li>Generate a query to capture data quality issues against the new structured relational data model</li>
+                <li>Write a short email or Slack message to the business stakeholder</li>
+            </ol>
+
+            <p>Please let us know which SQL dialect you are using and include any code, notes, etc.. that helped you develop your answers. Showing your work can only help you!</p>
+
+
+        <h3>First: Review Existing Unstructured Data and Diagram a New Structured Relational Data Model</h3>
+
+            <p>
+                Review the 3 sample data files provided below. Develop a simplified, structured, relational 
+                diagram to represent how you would model the data in a data warehouse. The diagram should 
+                show each table’s fields and the joinable keys. You can use pencil and paper, readme, or any 
+                digital drawing or diagramming tool with which you are familiar. If you can upload the text, 
+                image, or diagram into a git repository and we can read it, we will review it!
+            </p>
+
+
+        <h3>Second: Write a query that directly answers a predetermined question from a business stakeholder</h3>
+
+            <p>
+                Write a SQL query against your new structured relational data model that answers one of the following 
+                bullet points below of your choosing. Commit it to the git repository along with the rest of the exercise.
+            </p>
+
+            <p>
+                Note: When creating your data model be mindful of the other requests being made by 
+                the business stakeholder. If you can capture more than one bullet point in your model 
+                while keeping it clean, efficient, and performant, that benefits you as well as your team.
+            </p>
+            
+            <ul>
+                <li>What are the top 5 brands by receipts scanned for most recent month?</li>
+                <li>How does the ranking of the top 5 brands by receipts scanned for the recent month compare to the ranking for the previous month?</li>
+                <li>When considering <i>average spend</i> from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?</li>
+                <li>When considering <i>total number of items purchased</i> from receipts with 'rewardsReceiptStatus’ of ‘Accepted’ or ‘Rejected’, which is greater?</li>
+                <li>Which brand has the most <i>spend</i> among users who were created within the past 6 months?</li> 
+                <li>Which brand has the most <i>transactions</i> among users who were created within the past 6 months?</li>
+            </ul>
+
+
+        <h3>Third: Evaluate Data Quality Issues in the Data Provided</h3>
+
+            <p>
+                Using the programming language of your choice (SQL, Python, R, Bash, etc...) identify at least one data quality issue.
+                We are not expecting a full blown review of all the data provided, but instead want to know how you explore and evaluate
+                data of questionable provenance.
+            </p>
+
+            <p>
+                Commit your code and findings to the git repository along with the rest of the exercise.
+            </p>
+            
+
+        <h3>Fourth: Communicate with Stakeholders</h3>
+
+            <p>
+                Construct an email or slack message that is understandable to a product or business leader who isn’t 
+                familiar with your day to day work. This part of the exercise should show off how you communicate and 
+                reason about data with others. Commit your answers to the git repository along with the rest of your exercise.
+            </p>
+
+            <ul>
+                <li>What questions do you have about the data?</li>
+                <li>How did you discover the data quality issues?</li>
+                <li>What do you need to know to resolve the data quality issues?</li>
+                <li>What other information would you need to help you optimize the data assets you're trying to create?</li>
+                <li>What performance and scaling concerns do you anticipate in production and how do you plan to address them?</li>
+            </ul>
+
+
+        <h2>The Data</h2>
+
+            <h3>Receipts Data Schema</h3>
+
+                <a href="https://fetch-hiring.s3.amazonaws.com/analytics-engineer/ineeddata-data-modeling/receipts.json.gz">Download receipts.json.gz</a>
+                <ul>
+                    <li><b>_id:</b> uuid for this receipt</li>
+                    <li><b>bonusPointsEarned:</b> Number of bonus points that were awarded upon receipt completion</li>
+                    <li><b>bonusPointsEarnedReason:</b> event that triggered bonus points</li>
+                    <li><b>createDate:</b> The date that the event was created</li>
+                    <li><b>dateScanned:</b> Date that the user scanned their receipt</li>
+                    <li><b>finishedDate:</b> Date that the receipt finished processing</li>
+                    <li><b>modifyDate:</b> The date the event was modified</li>
+                    <li><b>pointsAwardedDate:</b> The date we awarded points for the transaction</li>
+                    <li><b>pointsEarned:</b> The number of points earned for the receipt</li>
+                    <li><b>purchaseDate:</b> the date of the purchase</li>
+                    <li><b>purchasedItemCount:</b> Count of number of items on the receipt</li>
+                    <li><b>rewardsReceiptItemList:</b> The items that were purchased on the receipt</li>
+                    <li><b>rewardsReceiptStatus:</b> status of the receipt through receipt validation and processing</li>
+                    <li><b>totalSpent:</b> The total amount on the receipt</li>
+                    <li><b>userId:</b> string id back to the User collection for the user who scanned the receipt</li>
+                </ul>
+
+
+            <h3>Users Data Schema</h3>
+
+                <a href="https://fetch-hiring.s3.amazonaws.com/analytics-engineer/ineeddata-data-modeling/users.json.gz">Download users.json.gz</a>
+                <ul>
+                    <li><b>_id:</b> user Id</li>
+                    <li><b>state:</b> state abbreviation</li>
+                    <li><b>createdDate:</b> when the user created their account</li>
+                    <li><b>lastLogin:</b> last time the user was recorded logging in to the app</li>
+                    <li><b>role:</b> constant value set to 'CONSUMER'</li>
+                    <li><b>active:</b> indicates if the user is active; only Fetch will de-activate an account with this flag</li>
+                </ul>
+
+
+            <h3>Brand Data Schema</h3>
+
+                <a href="https://fetch-hiring.s3.amazonaws.com/analytics-engineer/ineeddata-data-modeling/brands.json.gz">Download brands.json.gz</a>
+                <ul>
+                    <li><b>_id:</b> brand uuid</li>
+                    <li><b>barcode:</b> the barcode on the item</li>
+                    <li><b>brandCode:</b> String that corresponds with the brand column in a partner product file</li>
+                    <li><b>category:</b> The category name for which the brand sells products in</li>
+                    <li><b>categoryCode:</b> The category code that references a BrandCategory</li>
+                    <li><b>cpg:</b> reference to CPG collection</li>
+                    <li><b>topBrand:</b> Boolean indicator for whether the brand should be featured as a 'top brand'</li>
+                    <li><b>name:</b> Brand name</li>
+                </ul>
+            <p></p>
+
+
+        <h2>How do I submit my exercise?</h2>
+
+            <p>Provide a link to a public repository (i.e., GitHub, Bitbucket) to your recruiter. Please do not send files directly via email.</p>
+
+
+        <h2>FAQs</h2>
+            
+
+        <h3>How will this exercise be evaluated?</h3>
+
+            <p>
+                An engineer will review the code and documentation you submit. At a minimum ER diagrams should be legible and SQL must be runnable. 
+                While your solution does not need to be fully production ready, you are being evaluated so put your best foot forward!
+            </p>
+        
+
+        <h3>I have questions about the problem statement.</h3>
+
+            <p>
+                For any requirements not specified above, use your best judgement to determine expected result. 
+                You can elaborate on your decisions via the documentation you provide in your repo.
+            </p>
+        
+        
+        <h3>Can I provide a private repository?</h3>
+        
+            <p>
+                If at all possible, we prefer a public repository because we do not know which engineer will be 
+                evaluating your submission. Providing a public repository ensures a speedy review of your submission. 
+                If you are still uncomfortable providing a public repository, you can work with your recruiter to provide access to the reviewing engineer.
+            </p>
+
+
+        <h3>How long do I have to complete the exercise?</h3>
+
+            <p>
+                There is no time limit for the exercise. Out of respect for your time, we designed this exercise with 
+                the intent that it should take you a few hours. But, please take as much time as you need to complete the work.
+            </p>
+
+    
+
+<div id="jlzsCpn_0_component_0" class=" jlzs-container jlzs-gate" style="width: auto; height: 632px;"></div></body></html>
